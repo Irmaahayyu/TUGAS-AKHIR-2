@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+void tukar(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int main() {
+    int n;
+    cout << "Masukkan jumlah barang: ";
+    cin >> n;
+
+    int harga[100];
+    for (int i = 0; i < n; i++) {
+        cout << "Harga barang ke-" << i + 1 << ": ";
+        cin >> harga[i];
+    }
+    // Selection Sort 
+    for (int i = 0; i < n - 1; i++) {
+        int pos = i;
+        for (int j = i + 1; j < n; j++) {
+            if (harga[j] < harga[pos]) {
+                pos = j;
+            }
+        }
+        if (pos != i) {
+            tukar(&harga[i], &harga[pos]);
+        }
+    }
+
+    cout << endl << "Harga setelah diurutkan:" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << harga[i] << endl;
+    }
+    return 0;
+}
